@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="promote_dialog_title">项目推广</string>
+    <string name="promote_dialog_message_loading">内容正在加载中...</string>
+    <string name="promote_dialog_button_1">我知道了</string>
+    <string name="promote_dialog_button_2">不再提示</string>
+    <string name="promote_dialog_message_fail">内容加载失败，可能是网络错误。</string>
+</resources>

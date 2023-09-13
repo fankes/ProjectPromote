@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="promote_dialog_title">Project Promote</string>
+    <string name="promote_dialog_message_loading">Content is loading...</string>
+    <string name="promote_dialog_button_1">Got It</string>
+    <string name="promote_dialog_button_2">Dismiss</string>
+    <string name="promote_dialog_message_fail">The content failed to load, possibly due to a network error.</string>
+</resources>
