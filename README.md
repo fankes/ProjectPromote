@@ -3,7 +3,7 @@
 [![GitHub license](https://img.shields.io/github/license/fankes/ProjectPromote?color=blue)](https://github.com/fankes/ProjectPromote/blob/master/LICENSE)
 [![GitHub release](https://img.shields.io/github/v/release/fankes/ProjectPromote?display_name=release&logo=github&color=green)](https://github.com/fankes/ProjectPromote/releases)
 
-<img src="https://github.com/fankes/ProjectPromote/blob/master/img-src/icon.png?raw=true" width = "100" height = "100" alt="LOGO"/>
+<img src="img-src/icon.png" width = "100" height = "100" alt="LOGO"/>
 
 This is just an integrated dependency on my projects promotion for my own use.
 
