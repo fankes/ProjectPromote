@@ -18,10 +18,10 @@ plugins:
     version-ref: android-application
   org.jetbrains.kotlin.android:
     alias: kotlin-android
-    version: 1.9.21
+    version: 1.9.22
   com.vanniktech.maven.publish:
     alias: maven-publish
-    version: 0.25.3
+    version: 0.26.0
 
 libraries:
   io.noties.markwon:
@@ -45,7 +45,7 @@ libraries:
       version: 1.6.1
   com.google.android.material:
     material:
-      version: 1.10.0
+      version: 1.11.0
   androidx.constraintlayout:
     constraintlayout:
       version: 2.1.4
