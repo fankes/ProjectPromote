@@ -1,6 +1,6 @@
 /*
  * ProjectPromote - An integrated dependency on my projects promotion for my own use.
- * Copyright (C) 2017-2023 Fankes Studio(qzmmcn@163.com)
+ * Copyright (C) 2017-2024 Fankes Studio(qzmmcn@163.com)
  * https://github.com/fankes/TSBattery
  *
  * This software is non-free but opensource software: you can redistribute it
