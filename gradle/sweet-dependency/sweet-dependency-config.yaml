@@ -12,7 +12,7 @@ repositories:
 plugins:
   com.android.application:
     alias: android-application
-    version: 8.2.0
+    version: 8.2.2
   com.android.library:
     alias: android-library
     version-ref: android-application
@@ -21,7 +21,7 @@ plugins:
     version: 1.9.22
   com.vanniktech.maven.publish:
     alias: maven-publish
-    version: 0.26.0
+    version: 0.27.0
 
 libraries:
   io.noties.markwon:
@@ -36,7 +36,7 @@ libraries:
       version: 4.12.0
   androidx.lifecycle:
     lifecycle-runtime-ktx:
-      version: 2.6.2
+      version: 2.7.0
   androidx.core:
     core-ktx:
       version: 1.12.0
