@@ -1,7 +1,7 @@
 # Project Promote
 
-[![GitHub license](https://img.shields.io/github/license/fankes/ProjectPromote?color=blue)](https://github.com/fankes/ProjectPromote/blob/master/LICENSE)
-[![GitHub release](https://img.shields.io/github/v/release/fankes/ProjectPromote?display_name=release&logo=github&color=green)](https://github.com/fankes/ProjectPromote/releases)
+[![GitHub license](https://img.shields.io/github/license/fankes/ProjectPromote?color=blue&style=flat-square)](https://github.com/fankes/ProjectPromote/blob/master/LICENSE)
+[![GitHub release](https://img.shields.io/github/v/release/fankes/ProjectPromote?display_name=release&logo=github&color=green&style=flat-square)](https://github.com/fankes/ProjectPromote/releases)
 
 <img src="img-src/icon.png" width = "100" height = "100" alt="LOGO"/>
 
