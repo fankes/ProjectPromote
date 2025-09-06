@@ -51,13 +51,13 @@ object ProjectPromote {
     private const val PROJECT_PROMOTE_MAIN_EN_URL = "https://raw.githubusercontent.com/fankes/fankes/main/project-promote/README.md"
 
     /** 推广链接的主要地址 (CN) */
-    private const val PROJECT_PROMOTE_MAIN_CN_URL = "https://raw.gitmirror.com/fankes/fankes/main/project-promote/README-zh-CN.md"
+    private const val PROJECT_PROMOTE_MAIN_CN_URL = "https://raw.githubusercontent.com/fankes/fankes/main/project-promote/README-zh-CN.md"
 
     /** 推广链接的代理地址 (EN) */
-    private const val PROJECT_PROMOTE_PROXY_EN_URL = "https://raw.githubusercontent.com/fankes/fankes/main/project-promote/README.md"
+    private const val PROJECT_PROMOTE_PROXY_EN_URL = "https://hub.gitmirror.com/$PROJECT_PROMOTE_MAIN_EN_URL"
 
     /** 推广链接的代理地址 (CN) */
-    private const val PROJECT_PROMOTE_PROXY_CN_URL = "https://raw.gitmirror.com/fankes/fankes/main/project-promote/README-zh-CN.md"
+    private const val PROJECT_PROMOTE_PROXY_CN_URL = "https://hub.gitmirror.com/$PROJECT_PROMOTE_MAIN_CN_URL"
 
     /** 记录的 Sp 名称 */
     private const val PROJECT_PROMOTE_SP_NAME = "project_promote_readed"
