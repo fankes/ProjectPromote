@@ -1,7 +1,7 @@
 # Project Promote
 
 [![GitHub license](https://img.shields.io/github/license/fankes/ProjectPromote?color=blue&style=flat-square)](https://github.com/fankes/ProjectPromote/blob/master/LICENSE)
-[![GitHub release](https://img.shields.io/github/v/release/fankes/ProjectPromote?display_name=release&logo=github&color=green&style=flat-square)](https://github.com/fankes/ProjectPromote/releases)
+![Maven metadata URL](https://img.shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Fraw.githubusercontent.com%2Ffankes%2Fmaven-repository%2Frefs%2Fheads%2Fmain%2Frepository%2Freleases%2Fcom%2Ffankes%2Fprojectpromote%2Fproject-promote%2Fmaven-metadata.xml&logo=apachemaven&logoColor=orange&label=fankes-maven-releases&style=flat-square)
 
 <img src="img-src/icon.png" width = "100" height = "100" alt="LOGO"/>
 
