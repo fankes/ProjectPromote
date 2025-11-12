@@ -5,15 +5,22 @@ pluginManagement {
         mavenCentral()
     }
 }
-plugins {
-    id("com.highcapable.sweetdependency") version "1.0.4"
-    id("com.highcapable.sweetproperty") version "1.0.8"
-}
-sweetProperty {
-    global {
-        sourcesCode { isEnable = false }
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven("https://jitpack.io")
     }
-    rootProject { all { isEnable = false } }
+}
+plugins {
+    id("com.highcapable.gropify") version "1.0.0"
+}
+gropify {
+    global {
+        android { isEnabled = false }
+    }
+    rootProject { common { isEnabled = false } }
 }
 rootProject.name = "ProjectPromote"
 include(":demo-app")

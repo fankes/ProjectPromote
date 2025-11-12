@@ -1,15 +1,15 @@
 plugins {
-    autowire(libs.plugins.android.library)
-    autowire(libs.plugins.kotlin.android)
-    autowire(libs.plugins.maven.publish)
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.maven.publish)
 }
 
 android {
-    namespace = property.project.projectpromote.groupName
-    compileSdk = property.project.android.compileSdk
+    namespace = gropify.project.projectpromote.groupName
+    compileSdk = gropify.project.android.compileSdk
 
     defaultConfig {
-        minSdk = property.project.android.minSdk
+        minSdk = gropify.project.android.minSdk
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -23,28 +23,20 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "17"
-        freeCompilerArgs = listOf(
-            "-Xno-param-assertions",
-            "-Xno-call-assertions",
-            "-Xno-receiver-assertions"
-        )
-    }
 }
 
 dependencies {
-    implementation(io.noties.markwon.core)
-    implementation(io.noties.markwon.image)
-    implementation(io.noties.markwon.html)
-    implementation(com.squareup.okhttp3.okhttp)
-    implementation(androidx.lifecycle.lifecycle.runtime.ktx)
-    implementation(androidx.core.core.ktx)
-    implementation(androidx.appcompat.appcompat)
-    implementation(com.google.android.material.material)
-    testImplementation(junit.junit)
-    androidTestImplementation(androidx.test.ext.junit)
-    androidTestImplementation(androidx.test.espresso.espresso.core)
+    implementation(libs.markwon.core)
+    implementation(libs.markwon.image)
+    implementation(libs.markwon.html)
+    implementation(libs.okhttp)
+    implementation(libs.lifecycle.runtime.ktx)
+    implementation(libs.core.ktx)
+    implementation(libs.appcompat)
+    implementation(libs.material)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.junit.ext)
+    androidTestImplementation(libs.espresso.core)
 }
 
 publishing {
@@ -64,23 +56,23 @@ publishing {
 }
 
 mavenPublishing {
-    coordinates(property.project.projectpromote.groupName, property.project.projectpromote.moduleName, property.project.projectpromote.version)
+    coordinates(gropify.project.projectpromote.groupName, gropify.project.projectpromote.moduleName, gropify.project.projectpromote.version)
     pom {
-        name = property.project.name
-        description = property.project.description
-        url = property.project.url
+        name = gropify.project.name
+        description = gropify.project.description
+        url = gropify.project.url
         licenses {
             license {
-                name = property.project.licence.name
-                url = property.project.licence.url
-                distribution = property.project.licence.url
+                name = gropify.project.licence.name
+                url = gropify.project.licence.url
+                distribution = gropify.project.licence.url
             }
         }
         developers {
             developer {
-                id = property.project.developer.id
-                name = property.project.developer.name
-                email = property.project.developer.email
+                id = gropify.project.developer.id
+                name = gropify.project.developer.name
+                email = gropify.project.developer.email
             }
         }
     }
