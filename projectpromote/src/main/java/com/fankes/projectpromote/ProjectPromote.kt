@@ -41,6 +41,7 @@ import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.util.Locale
+import kotlin.time.Duration.Companion.milliseconds
 
 /**
  * 项目推广工具类
@@ -53,11 +54,11 @@ object ProjectPromote {
     /** 推广链接的主要地址 (CN) */
     private const val PROJECT_PROMOTE_MAIN_CN_URL = "https://raw.githubusercontent.com/fankes/fankes/main/project-promote/README-zh-CN.md"
 
-    /** 推广链接的代理地址 (EN) */
-    private const val PROJECT_PROMOTE_PROXY_EN_URL = "https://hub.gitmirror.com/$PROJECT_PROMOTE_MAIN_EN_URL"
+    /** GitHub 代理地址 1 - 直连失败后优先尝试 */
+    private const val GITHUB_PROXY_1_URL = "https://cdn.gh-proxy.org"
 
-    /** 推广链接的代理地址 (CN) */
-    private const val PROJECT_PROMOTE_PROXY_CN_URL = "https://hub.gitmirror.com/$PROJECT_PROMOTE_MAIN_CN_URL"
+    /** GitHub 代理地址 2 - 代理 1 失败后尝试 */
+    private const val GITHUB_PROXY_2_URL = "https://ghfast.top"
 
     /** 记录的 Sp 名称 */
     private const val PROJECT_PROMOTE_SP_NAME = "project_promote_readed"
@@ -114,16 +115,18 @@ object ProjectPromote {
                         button2.text = if (seconds > 0) "$button2Text ($seconds)" else button2Text
                         button2.isEnabled = seconds == 0
                         isEnableButton2 = seconds == 0
-                    }; delay(1000)
+                    }; delay(1000.milliseconds)
                 }
             }
 
             val mainUrl = if (isSystemLanguageSimplifiedChinese) PROJECT_PROMOTE_MAIN_CN_URL else PROJECT_PROMOTE_MAIN_EN_URL
-            val proxyUrl = if (isSystemLanguageSimplifiedChinese) PROJECT_PROMOTE_PROXY_CN_URL else PROJECT_PROMOTE_PROXY_EN_URL
-            loadContentFromUrl(mainUrl) { isDone, content ->
-                if (isDone) doParse(isDone = true, content)
-                else loadContentFromUrl(proxyUrl) { isDone2, content2 -> doParse(isDone2, content2) }
+            var isDone = false
+            var content = ""
+            listOf(mainUrl, "$GITHUB_PROXY_1_URL/$mainUrl", "$GITHUB_PROXY_2_URL/$mainUrl").forEach { url ->
+                if (isDone) return@forEach
+                loadContentFromUrl(url) { isDone1, content1 -> isDone = isDone1; content = content1 }
             }
+            doParse(isDone, content)
         }
     }
 
