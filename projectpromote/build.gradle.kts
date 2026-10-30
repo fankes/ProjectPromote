@@ -29,6 +29,7 @@ dependencies {
     implementation(libs.markwon.image)
     implementation(libs.markwon.html)
     implementation(libs.okhttp)
+    implementation(libs.androidsvg)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

@@ -31,9 +31,13 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.edit
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import io.noties.markwon.AbstractMarkwonPlugin
 import io.noties.markwon.Markwon
+import io.noties.markwon.MarkwonConfiguration
 import io.noties.markwon.html.HtmlPlugin
 import io.noties.markwon.image.ImagesPlugin
+import io.noties.markwon.image.destination.ImageDestinationProcessorRelativeToAbsolute
+import io.noties.markwon.image.network.OkHttpNetworkSchemeHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -90,17 +94,17 @@ object ProjectPromote {
             sp.edit { putBoolean(PROJECT_PROMOTE_SP_IS_READ, true) }
             dialog.dismiss()
         }
-        val markwon = createMarkdown(activity)
         activity.lifecycleScope.launch(Dispatchers.IO) {
             /**
              * 执行解析逻辑
              * @param isDone 是否成功
              * @param content 内容
+             * @param baseUrl 成功加载内容的地址 - 用于解析相对路径的图片
              */
-            suspend fun doParse(isDone: Boolean, content: String) {
+            suspend fun doParse(isDone: Boolean, content: String, baseUrl: String) {
                 withContext(Dispatchers.Main) {
                     if (isDone) {
-                        markwon.setMarkdown(messageView, content)
+                        createMarkdown(activity, baseUrl).setMarkdown(messageView, content)
                         messageView.invalidate()
                         messageView.requestLayout()
                     } else messageView.text = activity.getString(R.string.promote_dialog_message_fail)
@@ -122,11 +126,13 @@ object ProjectPromote {
             val mainUrl = if (isSystemLanguageSimplifiedChinese) PROJECT_PROMOTE_MAIN_CN_URL else PROJECT_PROMOTE_MAIN_EN_URL
             var isDone = false
             var content = ""
+            var loadedUrl = mainUrl
             listOf(mainUrl, "$GITHUB_PROXY_1_URL/$mainUrl", "$GITHUB_PROXY_2_URL/$mainUrl").forEach { url ->
                 if (isDone) return@forEach
+                loadedUrl = url
                 loadContentFromUrl(url) { isDone1, content1 -> isDone = isDone1; content = content1 }
             }
-            doParse(isDone, content)
+            doParse(isDone, content, loadedUrl)
         }
     }
 
@@ -155,11 +161,17 @@ object ProjectPromote {
     /**
      * 创建 [Markwon]
      * @param activity 当前实例
+     * @param baseUrl 用于解析相对路径图片的基础地址
      * @return [Markwon]
      */
-    private fun createMarkdown(activity: Activity) =
+    private fun createMarkdown(activity: Activity, baseUrl: String) =
         Markwon.builder(activity)
-            .usePlugin(ImagesPlugin.create())
+            .usePlugin(object : AbstractMarkwonPlugin() {
+                override fun configureConfiguration(builder: MarkwonConfiguration.Builder) {
+                    builder.imageDestinationProcessor(ImageDestinationProcessorRelativeToAbsolute.create(baseUrl))
+                }
+            })
+            .usePlugin(ImagesPlugin.create { it.addSchemeHandler(OkHttpNetworkSchemeHandler.create()) })
             .usePlugin(HtmlPlugin.create())
             .build()
 
@@ -171,7 +183,7 @@ object ProjectPromote {
     private suspend fun loadContentFromUrl(url: String, onResponse: suspend (isDone: Boolean, content: String) -> Unit) {
         runCatching {
             val response = OkHttpClient().newCall(Request.Builder().url(url).build()).execute()
-            val content = response.body?.string() ?: ""
+            val content = response.body.string()
             onResponse(response.isSuccessful && content.isNotBlank(), content)
         }.onFailure { onResponse(false, "") }
     }

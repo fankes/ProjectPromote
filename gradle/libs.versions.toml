@@ -3,6 +3,7 @@ agp = "9.3.3"
 maven-publish = "0.37.0"
 markwon = "4.6.2"
 okhttp = "5.5.1"
+androidsvg = "1.4"
 # The project current support min sdk version is 21,
 # suppress the warning about using newer versions of dependencies that may require higher min sdk version.
 # noinspection GradleDependency
@@ -29,6 +30,7 @@ markwon-core = { group = "io.noties.markwon", name = "core", version.ref = "mark
 markwon-image = { group = "io.noties.markwon", name = "image", version.ref = "markwon" }
 markwon-html = { group = "io.noties.markwon", name = "html", version.ref = "markwon" }
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+androidsvg = { group = "com.caverock", name = "androidsvg-aar", version.ref = "androidsvg" }
 lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core-ktx" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidx-appcompat" }
