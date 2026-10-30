@@ -19,7 +19,7 @@
  *
  * This file is created by fankes on 2023/9/13.
  */
-package com.fankes.projectpromote_demo
+package com.fankes.projectpromote.demo
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
