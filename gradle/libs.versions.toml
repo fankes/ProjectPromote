@@ -1,5 +1,5 @@
 [versions]
-agp = "9.3.3"
+agp = "9.5.3"
 maven-publish = "0.37.0"
 markwon = "4.6.2"
 okhttp = "5.5.1"
